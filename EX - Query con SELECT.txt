@@ -13,7 +13,7 @@ WHERE `cfu` > 10;
 #3 -----------------------------------
 SELECT `date_of_birth`, TIMESTAMPDIFF(YEAR, `date_of_birth`, CURRENT_DATE) AS `years`
 FROM `students`
-WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURRENT_DATE) >= 30  
+WHERE TIMESTAMPDIFF(YEAR, `date_of_birth`, CURRENT_DATE) > 30  
 ORDER BY `date_of_birth` DESC;
 --------------------------------------
 
