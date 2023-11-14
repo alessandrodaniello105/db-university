@@ -33,9 +33,7 @@ WHERE `teachers`.`id` = 44;
 ------------------------------------------------------------------------
 
 ------------------------------------------------------------------------
-#4 Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui
-sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e
-nome
+#4 Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
 
 SELECT `students`.`surname` AS `student_surname`, `students`.`name` AS `student_name`, `degrees`.`name` AS `degree_name`, `departments`.`name` AS `department_name`
 FROM `departments`
@@ -76,3 +74,13 @@ ON `course_teacher`.`teacher_id` = `teachers`.`id`
 WHERE `departments`.`name` = 'Dipartimento di Matematica'
 ORDER BY `teacher_surname`, `teacher_name`;
 ------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+#7 BONUS: Selezionare per ogni studente il numero di tentativi sostenuti per ogni esame, stampando anche il voto massimo. Successivamente, filtrare i tentativi con voto minimo 18.
+
+SELECT `students`.`id` AS `student_id`, `exams`.`course_id` AS `course_id`
+FROM `students`
+INNER JOIN `exam_student`
+ON `exam_student`.`student_id` = `students`.`id`
+INNER JOIN `exams`
+ON `exam_student`.`exam_id` = `exams`.`id`;
