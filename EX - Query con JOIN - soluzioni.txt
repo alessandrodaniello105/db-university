@@ -90,6 +90,7 @@ ON `exam_student`.`student_id` = `students`.`id`
 GROUP BY `exams`.`course_id`, `students`.`id`;
 
 STEP #2
+
 SELECT `students`.`surname` AS `student_surname`, `students`.`name` AS `student_name`, COUNT(`exams`.`course_id`) AS `exam_try`, `courses`.`name` AS `course_name`, MAX(`exam_student`.`vote`) AS `highest_vote`
 FROM `courses`
 INNER JOIN `exams`
@@ -98,5 +99,5 @@ INNER JOIN `exam_student`
 ON `exam_student`.`exam_id` = `exams`.`id`
 INNER JOIN `students`
 ON `exam_student`.`student_id` = `students`.`id`
-WHERE `exam_student`.`vote` >= 18
-GROUP BY `exams`.`course_id`, `students`.`id`;
+GROUP BY `exams`.`course_id`, `students`.`id`
+HAVING `highest_vote` >= 18;
